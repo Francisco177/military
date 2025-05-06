@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+
+<h1>Search Soldier by MOS</h1>
+
+<form action="/mos/search/results" method="GET">
+  <label for="mos">Enter MOS Number:</label>
+  <input type="text" id="mos" name="mos" required>
+  <button type="submit">Search</button>
+</form>
+
+<% if (locals.message) { %>
+    <p><%= locals.message %></p>
+  <% } %>
+
+<%- include('../partials/footer') %>

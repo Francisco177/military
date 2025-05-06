@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+<h1>Soldier Details</h1>
+
+<% if (soldier) { %>
+  <h2><%= soldier.name %></h2>
+  <p><strong>Age:</strong> <%= soldier.age %></p>
+  <p><strong>Gender:</strong> <%= soldier.gender %></p>
+  <p><strong>Rank:</strong> <%= soldier.rank %></p>
+  <p><strong>Unit:</strong> <%= soldier.unit %></p>
+  <p><strong>MOS:</strong> <%= soldier.mos %></p>
+  <p><strong>Bio:</strong> <%= soldier.bio %></p>
+
+  <% if (soldier.photo && soldier.photo.data) { %>
+    <img src="/mos/photo/<%= soldier._id %>" alt="<%= soldier.name %> Photo" width="200" />
+  <% } else { %>
+    <p>No photo available.</p>
+  <% } %>
+
+  <a href="/mos/search">Back to Search</a>
+<% } else { %>
+  <p>No soldier found with that MOS.</p>
+  <a href="/mos/search">Back to Search</a>
+<% } %>
+
+<%- include('../partials/footer') %>

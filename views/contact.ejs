@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<h2><i class="fas fa-envelope"></i> Contact Us</h2>
+
+<% if (success) { %>
+  <div style="background-color: #d4edda; color: #155724; padding: 1em; border-radius: 5px; margin-bottom: 1em;">
+    ✅ Message sent successfully!
+  </div>
+<% } %>
+
+<form action="/contact" method="POST">
+  <label for="name"><i class="fas fa-user"></i> Name:</label>
+  <input type="text" name="name" id="name" required />
+
+  <label for="email"><i class="fas fa-envelope-open-text"></i> Email:</label>
+  <input type="email" name="email" id="email" required />
+
+  <label for="message"><i class="fas fa-comment-dots"></i> Message:</label>
+  <textarea name="message" id="message" required></textarea>
+
+  <button type="submit"><i class="fas fa-paper-plane"></i> Send</button>
+</form>
+
+<!-- Static Contact Info Section -->
+<section style="display: flex; justify-content: space-between; margin-top: 2em; padding: 2em; background-color: #f4f4f4; border-radius: 8px; text-align: center;">
+  <div style="flex: 1;">
+    <i class="fas fa-map-marker-alt" style="font-size: 1.5em;"></i>
+    <p style="margin-top: 0.5em;">44 Shirley Ave<br />West Chicago, IL 60185</p>
+  </div>
+  <div style="flex: 1;">
+    <i class="fas fa-phone-alt" style="font-size: 1.5em;"></i>
+    <p style="margin-top: 0.5em;"><a href="tel:+16305551234" style="color: #333; text-decoration: underline;">(630) 555-1234</a></p>
+  </div>
+  <div style="flex: 1;">
+    <i class="fas fa-envelope" style="font-size: 1.5em;"></i>
+    <p style="margin-top: 0.5em;"><a href="mailto:Office.usarmydefensedepartment@gmail.com" style="color: #333; text-decoration: underline;">Office.usarmydefensedepartment@gmail.com</a></p>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

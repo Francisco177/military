@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+
+<h1>Soldier List</h1>
+
+<% if (soldiers.length > 0) { %>
+  <ul>
+    <% soldiers.forEach(function(soldier) { %>
+      <li>
+        <h2><%= soldier.name %></h2>
+        <p><strong>Age:</strong> <%= soldier.age %></p>
+        <p><strong>Gender:</strong> <%= soldier.gender %></p>
+        <p><strong>Rank:</strong> <%= soldier.rank %></p>
+        <p><strong>Unit:</strong> <%= soldier.unit %></p>
+        <p><strong>MOS:</strong> <%= soldier.mos %></p>
+
+        <% if (soldier.photo && soldier.photo.data) { %>
+          <img src="/mos/photo/<%= soldier._id %>" alt="<%= soldier.name %> Photo" width="200" />
+        <% } else { %>
+          <p><i class="fas fa-camera-retro"></i> No photo available.</p>
+        <% } %>
+
+        <a href="/mos/<%= soldier._id %>">
+          <i class="fas fa-user-circle"></i> View Profile
+        </a>
+      </li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p><i class="fas fa-search"></i> No soldiers found.</p>
+<% } %>
+
+<%- include('../partials/footer') %>

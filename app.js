@@ -4,15 +4,16 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
 const auth = require('basic-auth');
-const Contact = require('./models/Contact');
-const LeaveRequest = require('./models/LeaveRequest');
+const Contact = require('./models/contact');
+const LeaveRequest = require('./models/leaveRequest');
 const Soldier = require('./models/soldier');
 const mosRoutes = require('./routes/mos');  // Import MOS routes
+require('dotenv').config();
 
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/usamilitary', {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -24,8 +25,9 @@ mongoose.connect('mongodb://localhost:27017/usamilitary', {
 });
 
 // Admin credentials
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD = 'secret123';
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+
 
 // Admin Authentication Middleware
 function adminAuth(req, res, next) {

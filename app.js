@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -8,17 +9,20 @@ const Contact = require('./models/contact');
 const LeaveRequest = require('./models/leaveRequest');
 const Soldier = require('./models/soldier');
 const mosRoutes = require('./routes/mos');  // Import MOS routes
-require('dotenv').config();
 
 const app = express();
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, {
+// MongoDB URI from Atlas
+const mongoURI = process.env.MONGO_URI || 'mongodb+srv://torkpandeternenge:%40Torkpande17@cluster0.tliskaj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
-})
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.error("Error connecting to MongoDB:", err));
+}).then(() => {
+  console.log('Connected to MongoDB');
+}).catch((err) => {
+  console.error('Error connecting to MongoDB:', err);
+});
 
 // Admin credentials
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME;

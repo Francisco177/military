@@ -74,10 +74,10 @@ app.post('/contact', async (req, res) => {
 
 // Leave Request Submission
 app.post('/leave', async (req, res) => {
-  const { fullName, rank, unit, leaveType, startDate, endDate, reason, officerName, serviceNumber, relationship, address } = req.body;
+  const { fullName, email, rank, unit, leaveType, startDate, endDate, reason, officerName, serviceNumber, relationship, address } = req.body;
   
   const newLeaveRequest = new LeaveRequest({
-    fullName, rank, unit, leaveType, startDate, endDate, reason, officerName, serviceNumber, relationship, address,
+    fullName, email, rank, unit, leaveType, startDate, endDate, reason, officerName, serviceNumber, relationship, address,
     submittedAt: new Date(),
   });
 
